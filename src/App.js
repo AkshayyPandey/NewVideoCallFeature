@@ -15,17 +15,24 @@ function JoinScreen({ getMeetingAndToken }) {
     await getMeetingAndToken(meetingId);
   };
   return (
-    <div>
+    <div className="meetingCreation">
+      <div>
       <input
         type="text"
         placeholder="Enter Meeting Id"
         onChange={(e) => {
           setMeetingId(e.target.value);
         }}
+        className="ButonControl"
       />
-      <button onClick={onClick}>Join</button>
-      {" or "}
-      <button onClick={onClick}>Create Meeting</button>
+      <button onClick={onClick} className="ButonControl">Join</button>
+      </div>
+      <div className="otherOption">
+        <h2>OR</h2>
+      </div>
+      <div>
+      <button onClick={onClick} className="ButonControl">Create Meeting</button>
+      </div>
     </div>
   );
 }
@@ -63,12 +70,14 @@ function ParticipantView(props) {
 
   return (
     <div>
+      <div className="participant">
       <p>
         Participant: {displayName} | Webcam: {webcamOn ? "ON" : "OFF"} | Mic:{" "}
         {micOn ? "ON" : "OFF"}
       </p>
+      </div>
       <audio ref={micRef} autoPlay playsInline muted={isLocal} />
-      {webcamOn && (
+      {webcamOn ? (
         <ReactPlayer
           //
           playsinline // extremely crucial prop
@@ -80,13 +89,18 @@ function ParticipantView(props) {
           //
           url={videoStream}
           //
-          height={"300px"}
-          width={"300px"}
+          height={"550px"}
+          width={"1600px"}
+          className="videoViewer"
           onError={(err) => {
             console.log(err, "participant video error");
           }}
         />
-      )}
+      ):<div className="outerDiv">
+      <div className="noVideoScreen">
+        Turn on your Camera
+      </div>
+      </div>}
     </div>
   );
 }
@@ -95,10 +109,10 @@ function Controls() {
   const { leave, toggleMic, toggleWebcam } = useMeeting();
   return (
     <div>
-      <button onClick={() => leave()}>Leave</button>
-      <button onClick={() => toggleMic()}>toggleMic</button>
-      <button onClick={() => toggleWebcam()}>toggleWebcam</button>
-    </div>
+    <button onClick={() => leave()} className="ButonControl">Leave Meeting</button>
+    <button onClick={() => toggleMic()} className="ButonControl">Open Mice</button>
+    <button onClick={() => toggleWebcam()} className="ButonControl">Open Camera</button>
+  </div>
   );
 }
 
@@ -122,23 +136,24 @@ function MeetingView(props) {
   };
 
   return (
-    <div className="container">
+    <div className="JoinScreen">
       <h3>Meeting Id: {props.meetingId}</h3>
       {joined && joined == "JOINED" ? (
         <div>
-          <Controls />
-          //For rendering all the participants in the meeting
           {[...participants.keys()].map((participantId) => (
             <ParticipantView
               participantId={participantId}
               key={participantId}
             />
           ))}
+          <div className="controlClass">
+          <Controls />
+          </div>
         </div>
       ) : joined && joined == "JOINING" ? (
         <p>Joining the meeting...</p>
       ) : (
-        <button onClick={joinMeeting}>Join</button>
+        <button onClick={joinMeeting} className="joinControlButton">Join</button>
       )}
     </div>
   );
@@ -163,9 +178,9 @@ function App() {
     <MeetingProvider
       config={{
         meetingId,
-        micEnabled: true,
-        webcamEnabled: true,
-        name: "C.V. Raman",
+        micEnabled: false,
+        webcamEnabled: false,
+        name: "Akshay",
       }}
       token={authToken}
     >

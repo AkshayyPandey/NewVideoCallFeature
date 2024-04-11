@@ -36,3 +36,67 @@
     transform: rotate(360deg);
   }
 }
+
+.noVideoScreen{
+  background-color: #282c34;
+  height: 550px;
+  color: white;
+  width: 956px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.outerDiv{
+  display: flex;
+  justify-content: center;
+}
+.controlClass{
+  display: flex;
+  justify-content: center;
+}
+.participant{
+  display: flex;
+  justify-content: start;
+}
+.ButonControl{
+  border: 1px solid #282c34;
+    padding: 13px;
+    margin-left: 14px;
+    margin-top: 7px;
+    border-radius: 7px;
+    background-color: #282c34;
+    color: white;
+    font-size: 19px;
+}
+.videoViewer{
+  transform: scaleX(-1);
+  /* border: 1px solid red; */
+}
+.meetingCreation{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 99.8vh;
+}
+.otherOption{
+  color: #282c34;
+}
+.JoinScreen{
+    height: 99.8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.joinControlButton{
+  border: 1px solid #282c34;
+    padding: 13px;
+    margin-left: 14px;
+    margin-top: 7px;
+    border-radius: 7px;
+    background-color: #282c34;
+    color: white;
+    font-size: 19px;
+    width: 18%;
+}
