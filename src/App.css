@@ -1,102 +1,91 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* .viewingScreen{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid;
+} */
+.controlButtons{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: end;
+  padding-right: 36px;
+  background-color: black;
+  padding: 23px;
 }
-
-.App-link {
-  color: #61dafb;
+.controlButtons button{
+ padding: 10px;
+ margin-right: 5px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.noVideoScreen{
-  background-color: #282c34;
-  height: 550px;
-  color: white;
-  width: 956px;
+.wholeScreen{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: gray;
+  padding:2%;
+  max-height: 505px;
 }
-.outerDiv{
-  display: flex;
-  justify-content: center;
-}
-.controlClass{
-  display: flex;
-  justify-content: center;
-}
-.participant{
-  display: flex;
-  justify-content: start;
-}
-.ButonControl{
-  border: 1px solid #282c34;
-    padding: 13px;
-    margin-left: 14px;
-    margin-top: 7px;
-    border-radius: 7px;
-    background-color: #282c34;
-    color: white;
-    font-size: 19px;
-}
-.videoViewer{
-  transform: scaleX(-1);
+.individualScreen{
+  width: 50%;
   /* border: 1px solid red; */
-}
-.meetingCreation{
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 99.8vh;
 }
-.otherOption{
-  color: #282c34;
+#root{
+  height: 99.7vh;
+  background-color: black;
 }
-.JoinScreen{
-    height: 99.8vh;
+.meetingId{
+  margin: 0%;
+  color: white;
+  font-size: 2rem;
+}
+.offCamera{
+   height: 444px;
+   width: 700px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   box-shadow: 0px 0px 2px 0px black;
+}
+.orText{
+  color: white;
+}
+.seconddScreen{
+    height: 99vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.joinControlButton{
-  border: 1px solid #282c34;
-    padding: 13px;
-    margin-left: 14px;
-    margin-top: 7px;
-    border-radius: 7px;
-    background-color: #282c34;
-    color: white;
-    font-size: 19px;
-    width: 18%;
+.seconddScreen button{
+  margin-top: 1%;
+    padding: 7px;
+    width: 9%;
+    font-size: 21px;
+}
+.firstPage{
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btnJjoin{
+  width: 134px;
+  font-size: 19px;
+  padding: 9px;
+  margin-left: 5px;
+}
+.btnCreateMeeting{
+  width: 208px;
+  font-size: 20px;
+  padding: 9px;
+}
+.inputMettingId{
+  font-size: 16px;
+    height: 38px;
+}
+.theButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

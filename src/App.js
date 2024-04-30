@@ -15,23 +15,23 @@ function JoinScreen({ getMeetingAndToken }) {
     await getMeetingAndToken(meetingId);
   };
   return (
-    <div className="meetingCreation">
-      <div>
+    <div className="firstPage">
+      <div className="theButtons">
       <input
         type="text"
         placeholder="Enter Meeting Id"
         onChange={(e) => {
           setMeetingId(e.target.value);
         }}
-        className="ButonControl"
+        className="inputMettingId"
       />
-      <button onClick={onClick} className="ButonControl">Join</button>
+      <button onClick={onClick} className="btnJjoin">Join</button>
       </div>
-      <div className="otherOption">
+      <div className="orText">
         <h2>OR</h2>
       </div>
       <div>
-      <button onClick={onClick} className="ButonControl">Create Meeting</button>
+      <button onClick={onClick} className="btnCreateMeeting">Create Meeting</button>
       </div>
     </div>
   );
@@ -70,7 +70,7 @@ function ParticipantView(props) {
 
   return (
     <div>
-      <div className="participant">
+      <div>
       <p>
         Participant: {displayName} | Webcam: {webcamOn ? "ON" : "OFF"} | Mic:{" "}
         {micOn ? "ON" : "OFF"}
@@ -89,15 +89,14 @@ function ParticipantView(props) {
           //
           url={videoStream}
           //
-          height={"550px"}
-          width={"1600px"}
-          className="videoViewer"
+          height={"444px"}
+          width={"700px"}
           onError={(err) => {
             console.log(err, "participant video error");
           }}
         />
-      ):<div className="outerDiv">
-      <div className="noVideoScreen">
+      ):<div>
+      <div className="offCamera">
         Turn on your Camera
       </div>
       </div>}
@@ -108,10 +107,10 @@ function ParticipantView(props) {
 function Controls() {
   const { leave, toggleMic, toggleWebcam } = useMeeting();
   return (
-    <div>
-    <button onClick={() => leave()} className="ButonControl">Leave Meeting</button>
-    <button onClick={() => toggleMic()} className="ButonControl">Open Mice</button>
-    <button onClick={() => toggleWebcam()} className="ButonControl">Open Camera</button>
+    <div className="controlButtons">
+    <button onClick={() => leave()}>Leave Meeting</button>
+    <button onClick={() => toggleMic()} className="p-3">Open Mice</button>
+    <button onClick={() => toggleWebcam()} className="p-3">Open Camera</button>
   </div>
   );
 }
@@ -136,24 +135,29 @@ function MeetingView(props) {
   };
 
   return (
-    <div className="JoinScreen">
-      <h3>Meeting Id: {props.meetingId}</h3>
+    <div>
       {joined && joined == "JOINED" ? (
         <div>
+        <h3 className="meetingId">Meeting Id: {props.meetingId}</h3>
+        <Controls />
+        <div className="wholeScreen">
           {[...participants.keys()].map((participantId) => (
-            <ParticipantView
+           <div className="individualScreen">
+             <ParticipantView
               participantId={participantId}
               key={participantId}
             />
+           </div>
           ))}
-          <div className="controlClass">
-          <Controls />
-          </div>
+        </div>
         </div>
       ) : joined && joined == "JOINING" ? (
-        <p>Joining the meeting...</p>
+        <p className="orText">Joining the meeting...</p>
       ) : (
-        <button onClick={joinMeeting} className="joinControlButton">Join</button>
+        <div className="seconddScreen">
+          <h3 className="meetingId">Meeting Id: {props.meetingId}</h3>
+        <button onClick={joinMeeting} className="btnJjoin">Join</button>
+        </div>
       )}
     </div>
   );
